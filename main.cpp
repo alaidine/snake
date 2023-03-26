@@ -1,5 +1,8 @@
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <deque>
 
 int main() {
 	if(SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -26,8 +29,14 @@ int main() {
 		LEFT,
 		RIGHT
 	};
-	int dir = 0;
+
+	Direction dir = DOWN;
+
 	SDL_Rect head {250, 250, 10, 10};
+
+	std::deque<SDL_Rect> rq;
+	std:: vector<SDL_Rect> apples;
+
 	bool keep_window_open = true;
 	while(keep_window_open) {
 		SDL_Event e;

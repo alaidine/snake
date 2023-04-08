@@ -35,7 +35,13 @@ int main() {
 	SDL_Rect head {250, 250, 10, 10};
 
 	std::deque<SDL_Rect> rq;
-	std:: vector<SDL_Rect> apples;
+	int size = 1;
+
+	// Create apples on the map
+	std::vector<SDL_Rect> apples;
+	for (int i = 0; i < 100; i++) {
+		apples.emplace_back(rand()%100*10, rand()%100*10, 10, 10);
+	}
 
 	bool keep_window_open = true;
 	while(keep_window_open) {
@@ -47,6 +53,7 @@ int main() {
 				case SDL_QUIT:
 					keep_window_open = false;
 					break;
+
 				case SDL_KEYDOWN:
 					switch(e.key.keysym.sym) {
 						case SDLK_DOWN:
